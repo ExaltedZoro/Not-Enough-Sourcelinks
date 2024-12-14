@@ -11,11 +11,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.List;
 
 public class LunarSourcelinkBlockEntity extends BlockEntity {
+    private static final int distance = 2;
     private int source = 0;
     private final int max_source = 100;
 
     public LunarSourcelinkBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SOLAR_SOURCELINK.get(), pos, state);
+        super(ModBlockEntities.LUNAR_SOURCELINK.get(), pos, state);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, LunarSourcelinkBlockEntity pEntity) {
@@ -36,13 +37,13 @@ public class LunarSourcelinkBlockEntity extends BlockEntity {
 
         if(level.getGameTime() % 20 == 0 && !level.isDay() && pEntity.canSeeSky(pos, level)) {
             int nearbyLinks = -1;
-            for(BlockPos pPos : BlockPos.betweenClosed(pos.above(4).north(4).east(4), pos.below(4).south(4).west(4))) {
+            for(BlockPos pPos : BlockPos.betweenClosed(pos.above(distance).north(distance).east(distance), pos.below(distance).south(distance).west(distance))) {
                 if(level.getBlockEntity(pPos) instanceof LunarSourcelinkBlockEntity) {
                     nearbyLinks++;
                 }
             }
-            if(pEntity.source + (int) (16 / Math.pow(4, nearbyLinks)) < pEntity.max_source) {
-                pEntity.source += (int) (16 / Math.pow(4, nearbyLinks));
+            if(pEntity.source + (int) (16 / Math.pow(2, nearbyLinks)) < pEntity.max_source) {
+                pEntity.source += (int) (16 / Math.pow(2, nearbyLinks));
             } else {
                 pEntity.source = pEntity.max_source;
             }
