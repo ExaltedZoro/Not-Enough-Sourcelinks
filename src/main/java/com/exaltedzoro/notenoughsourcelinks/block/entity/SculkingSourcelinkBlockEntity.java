@@ -11,6 +11,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
@@ -22,6 +24,21 @@ public class SculkingSourcelinkBlockEntity extends BlockEntity {
 
     public SculkingSourcelinkBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SCULKING_SOURCELINK.get(), pPos, pBlockState);
+    }
+
+    @SubscribeEvent
+    public static void onLivingEntityDeath(LivingDeathEvent event) {
+        int experience = event.getEntity().getExperienceReward();
+        Level level = event.getEntity().level();
+        BlockPos pos = event.getEntity().blockPosition();
+        for(BlockPos pPos : BlockPos.betweenClosed(pos.above(5).north(5).east(5), pos.below(5).south(5).west(5))) {
+            BlockEntity entity = level.getBlockEntity(pPos);
+            if(entity instanceof SculkingSourcelinkBlockEntity sourceLink) {
+                sourceLink.activate(experience);
+                event.getEntity().skipDropExperience();
+                break;
+            }
+        }
     }
 
     public void activate(int experience) {

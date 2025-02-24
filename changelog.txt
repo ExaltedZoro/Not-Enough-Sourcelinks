@@ -1,7 +1,13 @@
-0.1.0
-Added recipes for Sculking, Lunar and Solar Sourcelinks
-Added/fixed Sourcelink loot tables
-Sourcelinks can now be mined with pickaxes
-
 0.0.2
-Initial release
+- Moved event method for Sculking Sourcelink activation from ModEvents to SculkingSourcelinkBlockEntity
+- Fixed Lunar Sourcelink being non-functional
+- Reduced distance that Solar/Lunar Sourcelinks check for others from 4 blocks to 2
+- Reduced penalty for each Solar/Lunar Sourcelink in range from source/4 to source/2
+- Added loot tables for Solar/Lunar Sourcelinks
+- Fixed loot table for Sculking Sourcelink having wrong namespace
+- Updated mod description
+- Updated README.txt
+- Updated LICENSE.txt
+
+0.0.1
+- Initial port from 1.19.2
