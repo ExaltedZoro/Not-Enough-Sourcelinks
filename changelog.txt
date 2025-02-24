@@ -1,6 +1,6 @@
 0.1.0
-Added recipes for Sourcelinks
-Sourcelinks can now be mined with pickaxes
+- Added recipes for Sourcelinks
+- Sourcelinks can now be mined with pickaxes
 
 0.0.2
 - Moved event method for Sculking Sourcelink activation from ModEvents to SculkingSourcelinkBlockEntity
