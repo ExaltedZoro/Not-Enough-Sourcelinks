@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "notenoughsourcelinks:solar_sourcelink",
+    "notenoughsourcelinks:lunar_sourcelink",
+    "notenoughsourcelinks:sculking_sourcelink"
+  ]
+}
